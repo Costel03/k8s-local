@@ -1,0 +1,42 @@
+# ArgoCD Helm values.yaml (full example)
+# Only override values you need. Defaults are shown for reference.
+
+server:
+  enabled: true
+  service:
+    type: ClusterIP
+    port: 80
+    targetPort: 8080
+    name: argocd-server
+  ingress:
+    enabled: false
+  resources: {}
+
+repoServer:
+  enabled: true
+  livenessProbe:
+    port: 8081 # Override to match actual listening port
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    timeoutSeconds: 2
+    failureThreshold: 3
+    successThreshold: 1
+  readinessProbe:
+    port: 8081
+    initialDelaySeconds: 5
+    periodSeconds: 10
+    timeoutSeconds: 2
+    failureThreshold: 3
+    successThreshold: 1
+  resources: {}
+
+applicationController:
+  enabled: true
+  resources: {}
+
+redis:
+  enabled: true
+  resources: {}
+
+# Add other overrides as needed
+# For full reference, see: https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
