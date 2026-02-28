@@ -1,0 +1,45 @@
+# Ignore Helm chart build output
+charts/
+*.tgz
+
+# Ignore Kubernetes secrets and sensitive files
+secrets.yaml
+*.key
+*.crt
+*.pem
+
+# Ignore editor and OS files
+.DS_Store
+*.swp
+*.swo
+*.bak
+*.tmp
+~*
+
+# Ignore log files
+*.log
+
+# Ignore VSCode settings
+.vscode/
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore node_modules
+node_modules/
+
+# Ignore Terraform state
+*.tfstate
+*.tfstate.backup
+.terraform/
+
+# Ignore local environment files
+.env
+.env.*
+
+# Ignore backup files
+*~
+
+# Ignore ArgoCD local cache
+.argocd-local/

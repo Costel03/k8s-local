@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-of-apps
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/Costel03/k8s-local.git'
+    targetRevision: HEAD
+    path: app-of-apps/apps
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+---
+# Example child application (add more in app-of-apps/apps/)
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: example-app
+#   namespace: argocd
+# spec:
+#   project: default
+#   source:
+#     repoURL: 'https://github.com/Costel03/k8s-local.git'
+#     targetRevision: HEAD
+#     path: path/to/your/app
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated: {}
