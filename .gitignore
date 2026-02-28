@@ -8,6 +8,9 @@ secrets.yaml
 *.crt
 *.pem
 
+# Ignore directory
+test/
+
 # Ignore editor and OS files
 .DS_Store
 *.swp
