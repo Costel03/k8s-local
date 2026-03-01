@@ -6,7 +6,7 @@ grafana:
   adminPassword: admin
   persistence:
     enabled: true
-    storageClassName: local-path
+    storageClassName: nfs-client
     size: 2Gi
     accessModes:
       - ReadWriteOnce
@@ -48,7 +48,7 @@ prometheus:
     storageSpec:
       volumeClaimTemplate:
         spec:
-          storageClassName: local-path
+          storageClassName: nfs-client
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:

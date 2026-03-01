@@ -1,0 +1,23 @@
+# NFS Subdir External Provisioner values.yaml
+nfs:
+  server: 192.168.56.10
+  path: /srv/nfs/k8s
+  mountOptions:
+    - nfsvers=4.1
+    - hard
+    - intr
+
+storageClass:
+  name: nfs-client
+  defaultClass: true
+  reclaimPolicy: Retain
+  volumeBindingMode: Immediate
+  archiveOnDelete: false
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 50m
+    memory: 64Mi
